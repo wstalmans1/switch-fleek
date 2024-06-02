@@ -1,21 +1,26 @@
 import "./App.css";
+import { useState } from 'react';
 //import { ethers } from 'ethers';
 
 function App() {
+
+  const [walletAddress, setWalletAddress] = useState("");
+
   async function requestAccount() {
     // Check if Metamask exists
-    if(window.ethereum) {
-      console.log('Metamask detected');
+    if (window.ethereum) {
+      console.log("Metamask detected");
 
       try {
-        const accounts = await window.ethereum.request({method: "eth_requestAccounts"});
-        console.log(accounts);
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setWalletAddress(accounts[0]);
       } catch (error) {
-        console.log('Error connecting...');
+        console.log("Error connecting...");
       }
-
     } else {
-      console.log('Metamask not detected');
+      console.log("Metamask not detected");
     }
   }
 
@@ -23,7 +28,7 @@ function App() {
     <main>
       <div>
         <button onClick={requestAccount}>Connect MetaMask</button>
-        <h2>Wallet Address:</h2>
+        <h2>Wallet Address: {walletAddress} </h2>
       </div>
     </main>
   );
