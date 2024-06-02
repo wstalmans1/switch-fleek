@@ -1,5 +1,5 @@
 import "./App.css";
-import { ethers } from 'ethers';
+//import { ethers } from 'ethers';
 
 function App() {
   async function requestAccount() {
