@@ -6,6 +6,14 @@ function App() {
     // Check if Metamask exists
     if(window.ethereum) {
       console.log('Metamask detected');
+
+      try {
+        const accounts = await window.ethereum.request({method: "eth_requestAccounts"});
+        console.log(accounts);
+      } catch (error) {
+        console.log('Error connecting...');
+      }
+
     } else {
       console.log('Metamask not detected');
     }

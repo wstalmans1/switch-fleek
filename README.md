@@ -1,3 +1,5 @@
+note to myself: learning a lot from this source => https://www.youtube.com/watch?v=0nNJzq8k0h8 (a.o. how to make sure that Metamask is detected)
+
 # React + Fleek Starter Kit
 
 ![image](https://github.com/fleekxyz/react-template/assets/55561695/0e7bfe91-ffe3-4dd5-852c-c551344163b4)
