@@ -19,19 +19,13 @@ export function useMetaMask() {
     if (window.ethereum) {
       console.log("Metamask detected");
       try {
-        const accounts: string[] = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
+        const accounts: string[] = await window.ethereum.request({method: "eth_requestAccounts"});
         setWalletAddress(accounts[0]);
-      } catch (error) {
-        console.log("Error connecting...");
-      }
-    } else {
-      console.log("Metamask not detected");
-    }
+      } catch (error) {console.log("Error connecting...")}
+    } else {console.log("Metamask not detected")}
   }
 
-  // ****** Listen for account changes and reflect them in front-end ******
+  // ****** Event listener: listen for account changes and reflect them in front-end ******
   useEffect(() => {
     if (window.ethereum) {
       const handleAccountsChanged = (accounts: string[]) => { setWalletAddress(accounts[0])};
