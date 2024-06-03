@@ -1,26 +1,20 @@
 import { useState, useEffect } from "react";
 
-declare global {
-  interface Window {
-    ethereum: any;
-  }
-}
+declare global {interface Window {ethereum: any}}
 
 export function useMetaMask() {
+
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  // Handle mobile environment
+  // ****** Handle mobile environment ******
   useEffect(() => {
     const userAgent = navigator.userAgent;
-    const isMobileDevice =
-      /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
-        userAgent.toLowerCase()
-      );
+    const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
     setIsMobile(isMobileDevice);
   }, []);
 
-  // Get an account from MetaMask
+  // ****** Get an account from MetaMask ******
   async function requestAccount() {
     if (window.ethereum) {
       console.log("Metamask detected");
@@ -37,20 +31,13 @@ export function useMetaMask() {
     }
   }
 
-  // Listen for account changes and reflect them in front-end
+  // ****** Listen for account changes and reflect them in front-end ******
   useEffect(() => {
     if (window.ethereum) {
-      const handleAccountsChanged = (accounts: string[]) => {
-        setWalletAddress(accounts[0]);
-      };
+      const handleAccountsChanged = (accounts: string[]) => { setWalletAddress(accounts[0])};
       window.ethereum.on("accountsChanged", handleAccountsChanged);
       // Cleanup function to remove the listener when then component unmounts
-      return () => {
-        window.ethereum.removeListener(
-          "accountsChanged",
-          handleAccountsChanged
-        );
-      };
+      return () => {window.ethereum.removeListener("accountsChanged", handleAccountsChanged)};
     }
   }, []); // Empty dependency array ensures this runs once when the component mounts
 
