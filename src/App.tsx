@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [walletAddress, setWalletAddress] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Handle mobile environment
+  useEffect(() => {
+    // Check if the user is on a mobile device
+    const userAgent = navigator.userAgent;
+    const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+    setIsMobile(isMobileDevice);
+  }, []);
 
   async function requestAccount() {
     // Check if Metamask exists
@@ -42,6 +51,9 @@ function App() {
     <main>
       <div>
         <button onClick={requestAccount}>Connect MetaMask</button>
+        {isMobile && (
+          <a href="http://metamask.app.link/dapp/some-air-hissing.on-fleek.app/" target="_blank" rel="noopener noreferrer">Open MetaMask</a>
+        )}
         <h2>Wallet Address: {walletAddress} </h2>
       </div>
     </main>
