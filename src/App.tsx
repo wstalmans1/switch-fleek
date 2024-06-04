@@ -31,7 +31,7 @@ function App() {
   return (
     <main>
       <div>
-          <button className="button-ConnectMetamask" onClick={requestAccount}>Connect MetaMask</button>
+          <button className="button-ConnectMetamask" onClick={requestAccount}>Connect Account From MetaMask</button>
           <h3>Active Wallet Address: <br />
            {walletAddress} </h3>
           <div className="payWithMetamask">
