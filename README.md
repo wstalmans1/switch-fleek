@@ -1,4 +1,7 @@
-note to myself: learning a lot from this source => https://www.youtube.com/watch?v=0nNJzq8k0h8 (a.o. how to make sure that Metamask is detected)
+notes to myself: 
+1) learning a lot from this source => https://www.youtube.com/watch?v=0nNJzq8k0h8 (a.o. how to make sure that Metamask is detected)
+2) the project uses Vite and all npm-commands are replaced by pnpm-commands
+3) I'm continuously deploying the project through Fleek BUT also, I'm deploying myself to IPFS (import of the dist-folder in my Brave-based IPFS node). I run "pnpm run build" in the root of the project to get the "dist folder", which I then upload to IPFS.
 
 # React + Fleek Starter Kit
 
