@@ -36,6 +36,10 @@ h3 {
   margin: 1px !important;
 }
 
+.button-ConnectMetamask {
+  background-color:darkred;
+}
+
 .payWithMetamask {
   background-color: #9ca3af;
   padding: 10px;
